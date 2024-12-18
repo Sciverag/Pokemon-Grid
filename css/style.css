@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+}
+
+#backgroundContainer {
+    width: 50vw;
+    height: 50vh;
+    display: grid;
+    background-image: url(../img/background.png);
+    grid-template-columns: 5fr 1fr 2fr 1fr 4fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    overflow-x: hidden;
+    transition: all 0.3s;
+}
+
+#grass {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    background-image: url(../img/hierba.png);
+}
+
+#houseContainer {
+    grid-column: 1;
+    grid-row: 5 / 7;
+    background-image: url(../img/Center.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#leftFlowers {
+    grid-column: 2;
+    grid-row: 3 / 7;
+    background-image: url(../img/flores.png);
+}
+
+#camino {
+    grid-column: 3;
+    grid-row: 1 / 7;
+    background-image: url(../img/camino.png);
+}
+
+#character {
+    grid-column: 3;
+    grid-row: 5;
+    background-image: url(../img/Personaje/PersonajeIdle.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: characterBackwards 0.3s infinite linear alternate,  characterPosition 10s linear infinite alternate;
+}
+
+#character:is(.forwards){
+    animation: characterForwards 0.3s infinite linear alternate,  characterPosition 10s linear infinite alternate;
+}
+
+#water {
+    grid-column: 5;
+    grid-row: 1 / 3;
+    background-image: url(../img/agua/agua.png);
+    animation: water 2s linear infinite;
+}
+
+#rightFlowers {
+    grid-column: 4 / 6;
+    grid-row: 3 / 5;
+    background-image: url(../img/flores.png);
+}
+
+#ballContainer {
+    grid-column: 4 / 6;
+    grid-row: 5;
+    background-image: url(../img/ball.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+
+#treeContainer {
+    grid-column: 1;
+    grid-row: 3 / 5;
+    display: flex;
+}
+
+.tree {
+    width: 100%;
+    background-image: url(../img/Arbol.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform-origin: bottom;
+    animation: tree 6s ease-in-out infinite alternate;
+}
+
+#latias {
+    grid-column: 1 / 6;
+    grid-row: 1 / 3;
+    background-image: url(../img/latias1.png);
+    background-position: top right;
+    background-repeat: no-repeat;
+    animation: latiasMovement 12s linear infinite, latiasIdle 0.5s ease-out infinite;
+}
+
+#ohho {
+    grid-column: 1;
+    grid-row: 5;
+    background-image: url(../img/Ohho.png);
+    background-size: 30%;
+    background-repeat: no-repeat;
+    margin-left: 8%;
+    width: 50%;
+}
+
+#ohho:hover {
+    animation: ohhoIdle 0.5s linear infinite alternate;
+}
+
+#sign {
+    grid-column: 2;
+    grid-row: 1;
+    background-image: url(../img/Cartel.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+}
+
+#message {
+    visibility: hidden;
+    grid-column: 1 / 6;
+    grid-row: 6;
+    background-color: rgb(221, 221, 221);
+}
+
+#backgroundContainer:has(#ohho:hover) > #message{
+    visibility: visible;
+}
+
+#backgroundContainer:has(#ohho:hover){
+    filter: contrast(120%) brightness(120%);
+}
+
+#backgroundContainer:has(#sign:hover) > #message{
+    visibility: visible;
+}
+
+@keyframes tree {
+    0%{
+        transform: skew(-4deg);
+    }
+
+    50% {
+        transform: skew(0deg);
+    }
+
+    100%{
+        transform: skew(4deg);
+    }
+}
+
+@keyframes water {
+    0% {
+        background-image: url(../img/agua/agua.png);
+    }
+
+    15% {
+        background-image: url(../img/agua/agua2.png);
+    }
+
+    30% {
+        background-image: url(../img/agua/agua3.png);
+    }
+
+    45% {
+        background-image: url(../img/agua/agua4.png);
+    }
+
+    60% {
+        background-image: url(../img/agua/agua5.png);
+    }
+
+    75% {
+        background-image: url(../img/agua/agua6.png);
+    }
+
+    90% {
+        background-image: url(../img/agua/agua7.png);
+    }
+
+    100% {
+        background-image: url(../img/agua/agua8.png);
+    }
+}
+
+@keyframes characterForwards {
+    0% {
+        background-image: url(../img/Personaje/PersonajeWalk.png);
+    }
+
+    100% {
+        background-image: url(../img/Personaje/PersonajeWalk2.png);
+    }
+}
+
+@keyframes characterBackwards {
+    0% {
+        background-image: url(../img/Personaje/PersonajeWalkB.png);
+    }
+
+    100% {
+        background-image: url(../img/Personaje/PersonajeWalk2B.png);
+    }
+}
+
+
+@keyframes characterPosition {
+    0% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(-400%);
+    }
+}
+
+@keyframes latiasMovement {
+    0%{
+        transform: translateX(10%);
+        background-position: top right;
+    }
+
+    100%{
+        transform: translateX(-10%);
+        background-position: bottom left;
+    }
+}
+
+@keyframes latiasIdle {
+    0% {
+        background-image: url(../img/latias1.png);
+    }
+
+    100% {
+        background-image: url(../img/latias2.png);
+    }
+}
+
+@keyframes ohhoIdle {
+    0% {
+        background-image: url(../img/Ohho.png);
+    }
+
+    100%{
+        background-image: url(../img/ohho2.png);
+    }
+}
