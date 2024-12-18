@@ -131,9 +131,22 @@ body {
     grid-column: 1 / 6;
     grid-row: 6;
     background-color: rgb(221, 221, 221);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#message > p {
+    position: absolute;
+    visibility: hidden;
 }
 
 #backgroundContainer:has(#ohho:hover) > #message{
+    visibility: visible;
+    filter: contrast(90%) brightness(85%);
+}
+
+#backgroundContainer:has(#ohho:hover) > #message > p:nth-child(2){
     visibility: visible;
 }
 
@@ -142,6 +155,10 @@ body {
 }
 
 #backgroundContainer:has(#sign:hover) > #message{
+    visibility: visible;
+}
+
+#backgroundContainer:has(#sign:hover) > #message > p:nth-child(1){
     visibility: visible;
 }
 
